@@ -1,4 +1,5 @@
 plugins {
+    kotlin("jvm")
     id("com.github.node-gradle.node") version "2.0.0"
 }
 
@@ -17,4 +18,11 @@ val yarn_bundle by tasks.getting  {
 
 val build by tasks.getting  {
     dependsOn("yarn_build")
+}
+
+val jar by tasks.getting(Jar::class)  {
+    archiveFileName.set("${project.name}.jar")
+    dependsOn("yarn_build")
+    from(fileTree("build"))
+    into("META-INF/resources")
 }
