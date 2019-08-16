@@ -4,3 +4,5 @@ pluginManagement {
     }
 }
 rootProject.name = "kotlin-fullstack-template"
+
+include("frontend")
